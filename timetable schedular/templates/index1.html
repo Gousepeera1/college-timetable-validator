@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Timetable Validator</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased text-gray-800 bg-gray-50">
+
+    <div class="min-h-screen p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-900">College Timetable Validator</h1>
+            <p class="mt-2 text-lg text-gray-600">Manually schedule courses and check for conflicts.</p>
+        </header>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Panel: Controls -->
+            <div class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Scheduler Controls</h2>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold text-lg mb-2">Add Course to Schedule</h3>
+                    <div class="space-y-3">
+                        <input type="text" id="course-name" placeholder="Course Name (e.g., CS101)" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500">
+                        <input type="text" id="professor-name" placeholder="Professor Name" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500">
+                        
+                        <select id="day-select" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500 bg-white">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                        </select>
+                        <select id="time-select" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500 bg-white">
+                            <option value="9-10 AM">9-10 AM</option>
+                            <option value="10-11 AM">10-11 AM</option>
+                            <option value="11-12 PM">11-12 PM</option>
+                            <option value="12-1 PM">12-1 PM</option>
+                            <option value="1-2 PM">1-2 PM</option>
+                            <option value="2-3 PM">2-3 PM</option>
+                            <option value="3-4 PM">3-4 PM</option>
+                            <option value="4-5 PM">4-5 PM</option>
+                        </select>
+                        
+                        <button id="add-course-btn" class="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors shadow">Add Course to Timetable</button>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                     <button id="validate-btn" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors text-lg shadow-lg">Check for Conflicts</button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Timetable -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Proposed Timetable</h2>
+                <div id="timetable-container" class="bg-gray-50 p-4 rounded-lg overflow-x-auto">
+                    <div id="timetable-grid" class="timetable-grid"></div>
+                    <p id="timetable-status" class="text-center mt-4 text-gray-500">Add courses to build your schedule.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.timetable-grid {
+    display: grid;
+    grid-template-columns: 60px repeat(5, 1fr); 
+    grid-template-rows: 30px repeat(8, 1fr); 
+    gap: 4px;
+}
+
+.day-header, .time-slot {
+    font-weight: 500;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a5568;
+}
+
+.course-cell {
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 0.8rem;
+    color: white;
+    min-height: 60px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent; /* Base border */
+}
+
+.course-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Style for highlighting conflicts */
+.conflict-cell {
+    border-color: #ef4444; /* Bright red border */
+    box-shadow: 0 0 10px #ef4444; /* Glowing effect */
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.4);
+  }
+}
